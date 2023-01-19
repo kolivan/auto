@@ -1,0 +1,14 @@
+if Id is present 
+css -> tagname#id or #id 
+
+if class attribute is present
+css -> tagname.class or .class
+
+Write css based on any attribute
+css -> [attribute = 'value']
+
+Write css with traversing from Parent to Child 
+css -> parenttagname >>childtagname
+
+if needed to write the locators based on text 
+text = ''   
