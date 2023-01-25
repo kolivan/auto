@@ -1,24 +1,24 @@
 const {test,expect,request} = require('@playwright/test');
-const { RegistrationPage } = require('./pages/registrationPage');
-const { WebApiBase } = require('../utils/baseAPI');
-const {loginAPI} = require('../utils/loginAPI');
-const {doctorsAPI} = require('../utils/doctorsAPI');
-
-const loginPayload = {identifier: 'dddd@ff.com', password: 'Testr_123'};
-const doctorPayload = {data:{ fullName: 'testauto testt', gender: 'male', address: 'testyty  yyt', specialization: 'tstyty', department: '1'}};
+const { RegistrationPage } = require('../pages/registrationPage');
+//const { WebApiBase } = require('../utils/baseAPI');
+//const {loginAPI} = require('../utils/loginAPI');
+//const {doctorsAPI} = require('../utils/doctorsAPI');
+const {payloads} = require('../../test-data/payloads');
+const {config} = require('../configs/stage.config');
 
 
 test('Page first test', async ({page})=>{
     const registrationPage = new RegistrationPage(page);
     await registrationPage.open();
     await registrationPage.register('ha kol','annkol@test.com','Tester_123');
-    const navigationPromise = page.waitForNavigation({ url: '**/sign-in' });
-    await navigationPromise;
     await expect(page.locator('h2')).toHaveText('Login form');
 });
 
+
 test('API first test', async ({request})=>{
-    const response = await request.post('http://stage.qa.nolimit.school/back-office/api/auth/local',{
+    const loginPayload = payloads.login;
+    const response = await request.post(config.use.apiURL
+        +'/auth/local',{
         data: loginPayload,
     })
     const responceBody = JSON.parse(await response.text());
@@ -52,7 +52,7 @@ test('API second test', async ({request})=>{
 
 });
 
-test.only('API login test', async ({request})=>{
+test('API login test', async ({request})=>{
     let login= new loginAPI(request);
     let doctors= new doctorsAPI(request);
     const token = await login.getToken('admin02.nolimit','123qweQ!');
