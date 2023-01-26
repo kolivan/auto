@@ -5,16 +5,23 @@ const { RegistrationPage } = require('../pages/registrationPage');
 //const {doctorsAPI} = require('../utils/doctorsAPI');
 const { payloads } = require('../../test-data/payloads');
 const { config } = require('../configs/stage.config');
+const { users } = require('../../test-data/users');
+
+
+let registrationPage;
 
 test.describe("Registration Tests", () => {
 
     test.beforeEach(async ({ page }) => {
-        const registrationPage = new RegistrationPage(page);
+        registrationPage = new RegistrationPage(page);
         await registrationPage.open();
+
+        users.stage
     });
 
-    test('Registration with valid data', async ({ page }) => {
-        await registrationPage.register('ha kol', 'annkol@test.com', 'Tester_123');
+    test.only('Registration with valid data', async ({ page }) => {
+        await registrationPage.register(users.stage.registration.fullName,
+            users.stage.registration.email, users.stage.registration.password);
         await expect(page.locator('h2')).toHaveText('Login form');
     });
 
