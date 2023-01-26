@@ -1,5 +1,5 @@
 const users = {
-    stage:{
+    stage: {
         user: {
             email: 'admin02.nolimit',
             password: '123qweQ!',
@@ -9,7 +9,7 @@ const users = {
             password: '123qweQ!',
         },
     },
-    prod:{
+    prod: {
         user: {
             email: '',
             password: '',

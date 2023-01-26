@@ -2,8 +2,10 @@ exports.RequestConfig = class RequestConfig {
 
     loginPayload() {
 
-        return {identifier: 'dddd@ff.com',
-        password: 'Testr_123'}
+        return {
+            identifier: 'dddd@ff.com',
+            password: 'Testr_123'
+        }
     }
 
 }

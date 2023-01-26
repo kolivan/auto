@@ -1,6 +1,5 @@
-const {config} = require('../configs/stage.config');
-exports.RegistrationPage = class RegistrationPage
-{
+const { config } = require('../configs/stage.config');
+exports.RegistrationPage = class RegistrationPage {
 
     constructor(page) {
         this.page = page;
@@ -11,14 +10,14 @@ exports.RegistrationPage = class RegistrationPage
     }
 
     async open() {
-        await this.page.goto(config.use.baseURL+'sign-up');
-      }
+        await this.page.goto(config.use.baseURL + 'sign-up');
+    }
 
-    async  register(userName, userEmail, userPassword) {
+    async register(userName, userEmail, userPassword) {
         await this.fullName.fill(userName);
         await this.email.type(userEmail);
         await this.password.type(userPassword);
         await this.registerButton.click();
-    }  
+    }
 
 }

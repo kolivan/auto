@@ -1,4 +1,5 @@
 const { expect } = require('@playwright/test');
+const { config } = require('../configs/stage.config');
 
 exports.BasePage = class BasePage {
 
@@ -10,7 +11,7 @@ exports.BasePage = class BasePage {
   }
 
   async open() {
-    await this.page.goto('http://stage.qa.nolimit.school/');
+    await this.page.goto(config.use.baseURL);
   }
 
 }
