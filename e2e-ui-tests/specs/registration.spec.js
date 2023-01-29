@@ -10,7 +10,7 @@ const { users } = require('../../test-data/users');
 
 let registrationPage;
 
-test.describe("Registration Tests", () => {
+test.describe('Registration tests', () => {
 
     test.beforeEach(async ({ page }) => {
         registrationPage = new RegistrationPage(page);
@@ -19,7 +19,7 @@ test.describe("Registration Tests", () => {
         users.stage
     });
 
-    test.only('Registration with valid data', async ({ page }) => {
+    test('Registration with valid data', async ({ page }) => {
         await registrationPage.register(users.stage.registration.fullName,
             users.stage.registration.email, users.stage.registration.password);
         await expect(page.locator('h2')).toHaveText('Login form');

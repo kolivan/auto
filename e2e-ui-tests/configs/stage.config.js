@@ -1,12 +1,12 @@
-const { PlaywrightTestConfig } = require('@playwright/test');
+import config from "../../playwright.config";
 
-const config = {
-    use: {
-        env: 'stage',
-        baseURL: 'http://stage.qa.nolimit.school/',
-        loginURL: 'http://stage.qa.nolimit.school/sign-in',
-        apiURL: 'http://stage.qa.nolimit.school/back-office/api',
-    },
+config.testDir = '../specs';
+config.use = {
+    headless: false,
+    env: 'stage',
+    baseUrl: 'http://stage.qa.nolimit.school',
+    loginUrl: 'http://stage.qa.nolimit.school/sign-in',
+    apiUrl: 'http://stage.qa.nolimit.school/back-office/api',
 };
 
-exports.config = config;
+module.exports = config;

@@ -1,17 +1,20 @@
-const { expect } = require('@playwright/test');
-const { config } = require('../configs/stage.config');
+const config = require("../../playwright.config");
 
 exports.BasePage = class BasePage {
-
   /**
    * @param {import('@playwright/test').Page} page
+   * @param relativeUrl
    */
-  constructor(page) {
+  constructor(page, relativeUrl) {
     this.page = page;
+    this.relativeUrl = relativeUrl;
   }
 
+  /** Methods */
   async open() {
-    await this.page.goto(config.use.baseURL);
+    await this.page.goto(`${config.default.use.baseUrl}${this.relativeUrl}`);
   }
+
+  /** Assertions */
 
 }
