@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "stage": "npx playwright test --config=e2e-ui-tests/configs/stage.config.js",
+    "prod": "npx playwright test --config=e2e-ui-tests/configs/prod.config.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
